@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vladimir Moposita · Estudiante de Ingeniería de Software</title>
+<meta name="description" content="Portafolio de Vladimir Moposita: desarrollo web, bases de datos y redes. Ambato, Ecuador.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1428; --blue:#004D98; --garnet:#A50044; --gold:#EDBB00;
+  --paper:#F1F4FA; --white:#FFFFFF; --muted:#4F5D78; --line:#D3DBE8;
+  --head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --stripes:repeating-linear-gradient(90deg,var(--blue) 0 1.5rem,var(--garnet) 1.5rem 3rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem}
+
+nav{background:var(--ink);position:sticky;top:0;z-index:10}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:3.5rem;gap:1rem}
+nav strong{font-family:var(--head);font-size:1.5rem;color:var(--white);letter-spacing:.03em}
+nav ul{display:flex;gap:1.1rem;list-style:none;font-size:.95rem;font-weight:500;overflow-x:auto;white-space:nowrap}
+nav a{text-decoration:none;color:#B9C4DC}
+nav a:hover{color:var(--gold)}
+
+/* Portada */
+.hero{background:var(--ink);color:var(--white);position:relative;padding:4.5rem 0 4rem}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:14px;background:var(--stripes)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center}
+.kicker{display:inline-block;background:var(--garnet);color:var(--white);font-weight:600;font-size:.9rem;padding:.2rem .8rem;border-radius:4px;margin-bottom:1.1rem}
+.hero h1{font-family:var(--head);font-weight:700;font-size:clamp(3.4rem,9vw,6.4rem);line-height:.92}
+.hero .lead{margin:1.4rem 0 1.9rem;max-width:34rem;color:#C9D3E8;font-size:1.15rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.25rem;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid var(--white);color:var(--white)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn.gold:hover{background:var(--white);border-color:var(--white)}
+.btn:hover{background:rgba(255,255,255,.12)}
+
+.card{background:var(--white);color:var(--ink);border-radius:14px;overflow:hidden;box-shadow:0 0 0 3px var(--gold)}
+.card-top{background:var(--stripes);height:2.2rem}
+.card-head{padding:1rem 1.4rem .4rem}
+.card-head b{font-family:var(--head);font-size:1.7rem;line-height:1}
+.card-head span{display:block;color:var(--muted);font-size:.95rem}
+.card dl{padding:.5rem 1.4rem 1.2rem}
+.card .row{display:grid;grid-template-columns:7rem 1fr;gap:.75rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.card .row:last-child{border-bottom:0}
+.card dt{color:var(--muted);font-size:.95rem}
+.card dd{font-weight:600}
+
+/* Secciones */
+section{padding:4rem 0}
+section.alt{background:var(--white)}
+h2{font-family:var(--head);font-size:2.6rem;line-height:1;margin-bottom:.6rem}
+h2::after{content:"";display:block;width:4rem;height:6px;margin-top:.7rem;background:var(--stripes)}
+.sub{color:var(--muted);margin:1rem 0 2rem;max-width:42rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.25rem}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.5rem}
+section.alt .box{background:var(--paper)}
+.box h3{font-family:var(--head);font-size:1.6rem;line-height:1.1;margin-bottom:.45rem}
+.box p{color:var(--muted)}
+.box .meta{color:var(--blue);font-weight:600;font-size:.95rem;margin-bottom:.6rem}
+
+.skill{margin-bottom:1.1rem}
+.skill .t{display:flex;justify-content:space-between;font-weight:600;margin-bottom:.35rem}
+.skill .t small{color:var(--muted);font-weight:500}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--garnet));border-radius:99px}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+.chip{border:1.5px solid var(--ink);border-radius:99px;padding:.2rem .85rem;font-weight:500;font-size:.95rem;background:var(--white)}
+
+.proj{display:flex;flex-direction:column;gap:.5rem;border-top:6px solid var(--blue)}
+.proj:nth-child(even){border-top-color:var(--garnet)}
+.proj .tag{align-self:flex-start;background:var(--gold);font-size:.85rem;font-weight:600;padding:.1rem .7rem;border-radius:4px}
+
+/* Fútbol */
+.futbol{background:var(--blue);color:var(--white)}
+.futbol h2::after{background:var(--gold)}
+.futbol .sub{color:#D3DEF2}
+.futbol .grid{grid-template-columns:1.3fr 1fr}
+.futbol .big{font-family:var(--serif);font-size:1.3rem;line-height:1.5}
+.futbol .stats{background:rgba(10,20,40,.35);border-radius:12px;padding:1.4rem}
+.futbol .stats div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.futbol .stats div:last-child{border-bottom:0}
+.futbol .stats span{color:#C4D2EC}
+.futbol .stats b{text-align:right}
+.motto{margin-top:1.5rem;font-family:var(--head);font-size:1.6rem;color:var(--gold)}
+
+/* Anime y libros */
+.quote{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;color:var(--ink);border-left:4px solid var(--garnet);padding-left:1rem;margin-top:1rem}
+.quote small{display:block;font-style:normal;font-family:var(--body);font-size:.85rem;color:var(--muted);margin-top:.3rem}
+.anime .box{border-left:6px solid var(--garnet)}
+.anime .box:nth-child(2){border-left-color:var(--blue)}
+.book{border-top:6px solid var(--gold)}
+
+.think{margin-top:1.5rem;background:var(--ink);color:var(--white);border-radius:12px;padding:1.6rem 1.8rem}
+.think p{font-family:var(--serif);font-size:1.25rem;line-height:1.5}
+.think small{display:block;margin-top:.5rem;color:#9FB0D0}
+
+footer{background:var(--ink);color:var(--white);padding:3.5rem 0 2.5rem;position:relative}
+footer::before{content:"";position:absolute;inset:0 0 auto 0;height:14px;background:var(--stripes)}
+footer h2{color:var(--white)}
+footer .sub{color:#C5CEE0}
+footer .btn:hover{background:var(--white);color:var(--ink)}
+footer .dato{display:inline-flex;flex-direction:column;cursor:text;user-select:text;border-color:#51607D}
+footer .dato small{color:#8E9AB5;font-weight:500;font-size:.8rem}
+footer .dato:hover{background:transparent;color:var(--white)}
+.copy{margin-top:2.2rem;font-size:.9rem;color:#8E9AB5}
+
+@media (max-width:52rem){
+  .hero .wrap,.futbol .grid{grid-template-columns:1fr}
+  .hero{padding-top:3rem}
+  section{padding:3rem 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Principal">
+  <div class="wrap">
+    <strong>VM</strong>
+    <ul>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#futbol">Fútbol</a></li>
+      <li><a href="#anime">Anime</a></li>
+      <li><a href="#libros">Libros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Mediocampista del código</span>
+      <h1>Vladimir Moposita</h1>
+      <p class="lead">Estudiante de Ingeniería de Software en la Universidad Técnica de Ambato. Me gusta pensar antes de escribir una línea: construyo aplicaciones web, diseño bases de datos y entiendo cómo se conectan las redes.</p>
+      <div class="btns">
+        <a class="btn gold" href="#proyectos">Ver mis proyectos</a>
+        <a class="btn" href="#contacto">Contactarme</a>
+      </div>
+    </div>
+
+    <aside class="card" aria-label="Ficha personal">
+      <div class="card-top"></div>
+      <div class="card-head"><b>Ficha de jugador</b><span>Ambato, Ecuador</span></div>
+      <dl>
+        <div class="row"><dt>Posición</dt><dd>Mediocampista: conecto el backend con la interfaz</dd></div>
+        <div class="row"><dt>Equipo</dt><dd>FC Barcelona (y FISEI, en la universidad)</dd></div>
+        <div class="row"><dt>Especialidad</dt><dd>Web, bases de datos y redes</dd></div>
+        <div class="row"><dt>Lenguajes</dt><dd>Java, PHP, SQL, JavaScript</dd></div>
+        <div class="row"><dt>Fuera de la cancha</dt><dd>Anime, libros y pensar</dd></div>
+      </dl>
+    </aside>
+  </div>
+</header>
+
+<main>
+<section id="sobre-mi" class="alt">
+  <div class="wrap">
+    <h2>Sobre mí</h2>
+    <p class="sub">Soy de Ecuador y estudio Ingeniería de Software. Aprendo haciendo: practico con proyectos de clase, laboratorios y trabajos en equipo.</p>
+    <div class="grid">
+      <div class="box"><h3>Lo que hago</h3><p>Aplicaciones de escritorio y web, modelado de bases de datos y laboratorios de redes con VLANs, controladoras inalámbricas y firewall.</p></div>
+      <div class="box"><h3>Cómo trabajo</h3><p>Uso Git y GitHub para colaborar, metodologías ágiles en proyectos grupales y mensajes de commit claros.</p></div>
+      <div class="box"><h3>Lo que busco</h3><p>Prácticas preprofesionales y proyectos donde pueda aprender, aportar al equipo y crecer como desarrollador.</p></div>
+    </div>
+    <div class="think">
+      <p>“Antes de programar, pienso. Antes de pasar el balón, también.”</p>
+      <small>Mi forma de trabajar, en una frase</small>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="wrap">
+    <h2>Habilidades</h2>
+    <p class="sub">Los niveles muestran mi progreso actual y los voy actualizando a medida que aprendo.</p>
+    <div class="grid">
+      <div class="box">
+        <h3>Programación</h3>
+        <div class="skill"><div class="t">Java <small>Swing, NetBeans</small></div><div class="bar"><i style="width:70%"></i></div></div>
+        <div class="skill"><div class="t">PHP <small>MVC</small></div><div class="bar"><i style="width:60%"></i></div></div>
+        <div class="skill"><div class="t">HTML y CSS</div><div class="bar"><i style="width:65%"></i></div></div>
+        <div class="skill"><div class="t">JavaScript</div><div class="bar"><i style="width:50%"></i></div></div>
+      </div>
+      <div class="box">
+        <h3>Bases de datos</h3>
+        <div class="skill"><div class="t">SQL <small>consultas y modelado</small></div><div class="bar"><i style="width:70%"></i></div></div>
+        <div class="skill"><div class="t">PostgreSQL</div><div class="bar"><i style="width:65%"></i></div></div>
+        <div class="skill"><div class="t">MySQL</div><div class="bar"><i style="width:65%"></i></div></div>
+      </div>
+      <div class="box">
+        <h3>Redes</h3>
+        <div class="skill"><div class="t">Packet Tracer <small>VLANs, trunk, DHCP</small></div><div class="bar"><i style="width:70%"></i></div></div>
+        <div class="skill"><div class="t">Redes inalámbricas <small>WLC</small></div><div class="bar"><i style="width:55%"></i></div></div>
+        <div class="skill"><div class="t">Firewalls <small>OPNsense</small></div><div class="bar"><i style="width:50%"></i></div></div>
+      </div>
+      <div class="box">
+        <h3>Herramientas</h3>
+        <p>Lo que uso a diario para trabajar.</p>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">NetBeans</span>
+          <span class="chip">pgAdmin</span><span class="chip">JasperReports</span><span class="chip">Packet Tracer</span>
+          <span class="chip">Scrum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos" class="alt">
+  <div class="wrap">
+    <h2>Proyectos</h2>
+    <p class="sub">Una selección de lo que he construido.</p>
+    <div class="grid">
+      <article class="box proj"><span class="tag">Web · Equipo</span><h3>OficiosYA</h3><p>Plataforma tipo marketplace para contratar servicios, desarrollada en grupo.</p></article>
+      <article class="box proj"><span class="tag">Java · PHP · MySQL</span><h3>ProyectoCuartoB</h3><p>CRUD de estudiantes en Java Swing con reportes, y su versión web con arquitectura MVC.</p></article>
+      <article class="box proj"><span class="tag">Java · Git</span><h3>Practica_G5</h3><p>Proyecto colaborativo en equipo, con flujo de ramas y control de versiones en Git.</p></article>
+      <article class="box proj"><span class="tag">Redes</span><h3>Laboratorios de redes</h3><p>VLANs con router-on-a-stick y DHCP, controladora inalámbrica y firewall OPNsense.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="futbol" class="futbol">
+  <div class="wrap">
+    <h2>Fútbol</h2>
+    <p class="sub">Me gusta jugarlo y verlo. Soy hincha del FC Barcelona y mi posición es la de mediocampista.</p>
+    <div class="grid">
+      <div>
+        <p class="big">En el mediocampo se piensa el partido: levantas la cabeza, lees los espacios y das el pase que abre la defensa. Me gusta ese papel porque programar se parece mucho: entender el problema primero y ejecutar después.</p>
+        <p class="motto">Més que un club</p>
+      </div>
+      <div class="stats">
+        <div><span>Equipo</span><b>FC Barcelona</b></div>
+        <div><span>Posición</span><b>Mediocampista</b></div>
+        <div><span>Estilo de juego</span><b>Pensar antes de pasar</b></div>
+        <div><span>Colores</span><b>Azulgrana</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="anime" class="anime">
+  <div class="wrap">
+    <h2>Anime</h2>
+    <p class="sub">Dos series que me enseñaron más de lo que esperaba sobre esfuerzo, equipo y decisiones difíciles.</p>
+    <div class="grid">
+      <article class="box">
+        <h3>Haikyuu!!</h3>
+        <p class="meta">Voleibol · Trabajo en equipo</p>
+        <p>Me gusta porque nadie gana solo: cada punto sale de la confianza entre jugadores y de entrenar lo que aún no sale bien.</p>
+        <p class="quote">“Cada punto se gana en equipo: nadie salta solo.”<small>Frase inspirada en la serie</small></p>
+      </article>
+      <article class="box">
+        <h3>Shingeki no Kyojin</h3>
+        <p class="meta">Ataque a los Titanes · Libertad y sacrificio</p>
+        <p>Una historia sobre la libertad, el miedo y el costo de las decisiones. Me recuerda que avanzar también es una forma de ganar.</p>
+        <p class="quote">“La libertad se conquista dando un paso adelante, incluso con miedo.”<small>Frase inspirada en la serie</small></p>
+        <p class="quote">“Shinzō wo Sasageyo: ofrece tu corazón.”<small>El lema de la serie, en español</small></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="libros" class="alt">
+  <div class="wrap">
+    <h2>Libros</h2>
+    <p class="sub">Lecturas que me hacen pensar, con una frase de cada una.</p>
+    <div class="grid">
+      <article class="box book">
+        <h3>Meditaciones</h3>
+        <p class="meta">Marco Aurelio</p>
+        <p>Sobre la calma y el dominio de uno mismo frente a lo que no podemos controlar.</p>
+        <p class="quote">“Tienes poder sobre tu mente, no sobre los hechos.”<small>Idea central del libro</small></p>
+      </article>
+      <article class="box book">
+        <h3>El principito</h3>
+        <p class="meta">Antoine de Saint-Exupéry</p>
+        <p>Un cuento corto que se lee distinto a cada edad, sobre lo que de verdad importa.</p>
+        <p class="quote">“Lo esencial es invisible a los ojos.”<small>Antoine de Saint-Exupéry</small></p>
+      </article>
+      <article class="box book">
+        <h3>El arte de la guerra</h3>
+        <p class="meta">Sun Tzu</p>
+        <p>Estrategia aplicada a cualquier reto: preparar bien antes de actuar.</p>
+        <p class="quote">“Conócete a ti mismo y conoce al rival.”<small>Idea central del libro</small></p>
+      </article>
+      <article class="box book">
+        <h3>Don Quijote de la Mancha</h3>
+        <p class="meta">Miguel de Cervantes</p>
+        <p>La historia de quien insiste en sus ideales aunque todos duden de él.</p>
+        <p class="quote">“La libertad es uno de los más preciosos dones.”<small>Miguel de Cervantes</small></p>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contacto">
+  <div class="wrap">
+    <h2>Contacto</h2>
+    <p class="sub">¿Tienes una idea, una práctica o un proyecto? Escríbeme.</p>
+    <div class="btns">
+      <a class="btn" href="https://github.com/Ganeshmpt">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/vladimir-moposita-16084a131/">LinkedIn</a>
+      <span class="btn dato"><small>Correo personal</small>vladimirmoposita14@gmail.com</span>
+      <span class="btn dato"><small>Correo institucional</small>gmopsita2132@uta.edu.ec</span>
+    </div>
+    <p class="copy">© 2026 Vladimir Moposita · Ambato, Ecuador</p>
+  </div>
+</footer>
+
+</body>
+</html>
